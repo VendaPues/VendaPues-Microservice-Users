@@ -1,4 +1,4 @@
-package org.ada.school.controller.user;
+package org.venda.pues.usersapi.controller.user;
 
 public class UserDto
 {

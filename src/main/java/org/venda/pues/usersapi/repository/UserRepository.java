@@ -1,6 +1,6 @@
-package org.ada.school.repository;
+package org.venda.pues.usersapi.repository;
 
-import org.ada.school.repository.document.User;
+import org.venda.pues.usersapi.repository.document.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;

@@ -204,9 +204,9 @@ Our API Endpoints can be used by anyone that knows the URL and API structure. In
 
    import io.jsonwebtoken.Jwts;
    import io.jsonwebtoken.SignatureAlgorithm;
-   import org.ada.school.exception.InvalidCredentialsException;
-   import org.ada.school.repository.document.User;
-   import org.ada.school.service.UserService;
+   import org.venda.pues.usersapi.exception.InvalidCredentialsException;
+   import org.venda.pues.usersapi.repository.document.User;
+   import org.venda.pues.usersapi.service.UserService;
    import org.springframework.beans.factory.annotation.Autowired;
    import org.springframework.beans.factory.annotation.Value;
    import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -218,8 +218,8 @@ Our API Endpoints can be used by anyone that knows the URL and API structure. In
    import java.util.Calendar;
    import java.util.Date;
    
-   import static org.ada.school.utils.Constants.CLAIMS_ROLES_KEY;
-   import static org.ada.school.utils.Constants.TOKEN_DURATION_MINUTES;
+   import static org.venda.pues.utils.Constants.CLAIMS_ROLES_KEY;
+   import static org.venda.pues.utils.Constants.TOKEN_DURATION_MINUTES;
    
    @RestController
    @RequestMapping( "v1/auth" )
@@ -429,8 +429,8 @@ This filter will help you verify the authroization token send on the request aut
    import java.util.Objects;
    import java.util.Optional;
    
-   import static org.ada.school.utils.Constants.CLAIMS_ROLES_KEY;
-   import static org.ada.school.utils.Constants.COOKIE_NAME;
+   import static org.venda.pues.utils.Constants.CLAIMS_ROLES_KEY;
+   import static org.venda.pues.utils.Constants.COOKIE_NAME;
    
    @Component
    public class JwtRequestFilter

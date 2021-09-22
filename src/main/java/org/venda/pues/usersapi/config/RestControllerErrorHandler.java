@@ -1,7 +1,7 @@
-package org.ada.school.config;
+package org.venda.pues.usersapi.config;
 
-import org.ada.school.error.InternalServerErrorException;
-import org.ada.school.exception.ServerErrorResponseDto;
+import org.venda.pues.usersapi.error.InternalServerErrorException;
+import org.venda.pues.usersapi.exception.ServerErrorResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;

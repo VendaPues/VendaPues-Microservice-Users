@@ -1,7 +1,7 @@
-package org.ada.school.exception;
+package org.venda.pues.usersapi.exception;
 
-import org.ada.school.error.ErrorCodeEnum;
-import org.ada.school.error.InternalServerErrorException;
+import org.venda.pues.usersapi.error.ErrorCodeEnum;
+import org.venda.pues.usersapi.error.InternalServerErrorException;
 import org.springframework.http.HttpStatus;
 
 public class UserNotFoundException

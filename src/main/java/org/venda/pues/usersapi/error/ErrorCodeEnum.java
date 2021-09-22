@@ -1,4 +1,4 @@
-package org.ada.school.error;
+package org.venda.pues.usersapi.error;
 
 public enum ErrorCodeEnum
 {

@@ -1,7 +1,7 @@
-package org.ada.school.controller.user;
+package org.venda.pues.usersapi.controller.user;
 
-import org.ada.school.repository.document.User;
-import org.ada.school.service.UserService;
+import org.venda.pues.usersapi.repository.document.User;
+import org.venda.pues.usersapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -54,6 +55,7 @@ public class UserController
     }
 
     @DeleteMapping( "/{id}" )
+    @RolesAllowed("ADMIN")
     public ResponseEntity<Boolean> delete( @PathVariable String id )
     {
         return ResponseEntity.ok( userService.deleteById( id ) );

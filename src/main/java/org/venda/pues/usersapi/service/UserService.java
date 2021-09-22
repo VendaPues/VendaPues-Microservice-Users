@@ -1,8 +1,8 @@
-package org.ada.school.service;
+package org.venda.pues.usersapi.service;
 
-import org.ada.school.controller.user.UserDto;
-import org.ada.school.exception.UserNotFoundException;
-import org.ada.school.repository.document.User;
+import org.venda.pues.usersapi.controller.user.UserDto;
+import org.venda.pues.usersapi.exception.UserNotFoundException;
+import org.venda.pues.usersapi.repository.document.User;
 
 import java.util.List;
 

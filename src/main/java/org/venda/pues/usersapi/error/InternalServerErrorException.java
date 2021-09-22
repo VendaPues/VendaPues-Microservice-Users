@@ -1,6 +1,6 @@
-package org.ada.school.error;
+package org.venda.pues.usersapi.error;
 
-import org.ada.school.exception.ServerErrorResponseDto;
+import org.venda.pues.usersapi.exception.ServerErrorResponseDto;
 import org.springframework.http.HttpStatus;
 
 public class InternalServerErrorException
