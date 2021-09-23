@@ -1,6 +1,6 @@
 package org.venda.pues.usersapi.service;
 
-import org.venda.pues.usersapi.controller.user.UserDto;
+import org.venda.pues.usersapi.controller.dto.UserDto;
 import org.venda.pues.usersapi.exception.UserNotFoundException;
 import org.venda.pues.usersapi.repository.UserRepository;
 import org.venda.pues.usersapi.repository.document.User;

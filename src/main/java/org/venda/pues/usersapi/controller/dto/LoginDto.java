@@ -1,4 +1,4 @@
-package org.venda.pues.usersapi.controller.user;
+package org.venda.pues.usersapi.controller.dto;
 
 public class LoginDto
 {

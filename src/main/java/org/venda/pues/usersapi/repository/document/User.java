@@ -1,7 +1,7 @@
 package org.venda.pues.usersapi.repository.document;
 
 import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.venda.pues.usersapi.controller.user.UserDto;
+import org.venda.pues.usersapi.controller.dto.UserDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;

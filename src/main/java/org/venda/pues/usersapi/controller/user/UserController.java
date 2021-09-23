@@ -1,5 +1,6 @@
 package org.venda.pues.usersapi.controller.user;
 
+import org.venda.pues.usersapi.controller.dto.UserDto;
 import org.venda.pues.usersapi.repository.document.User;
 import org.venda.pues.usersapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

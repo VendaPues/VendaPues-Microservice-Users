@@ -2,8 +2,8 @@ package org.venda.pues.usersapi.controller.auth;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.venda.pues.usersapi.controller.user.LoginDto;
-import org.venda.pues.usersapi.controller.user.TokenDto;
+import org.venda.pues.usersapi.controller.dto.LoginDto;
+import org.venda.pues.usersapi.controller.dto.TokenDto;
 import org.venda.pues.usersapi.exception.InvalidCredentialsException;
 import org.venda.pues.usersapi.repository.document.User;
 import org.venda.pues.usersapi.service.UserService;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Calendar;
 import java.util.Date;
-import static org.venda.pues.usersapi.utils.Constants.CLAIMS_ROLES_KEY;
 import static org.venda.pues.usersapi.utils.Constants.TOKEN_DURATION_MINUTES;
 
 @RestController
@@ -25,6 +24,12 @@ public class AuthController {
 
     @Value( "${app.secret}" )
     String secret;
+
+    @Value( "${CLAIMS_ROLES_KEY}" )
+    String claimsRolesKey;
+
+    @Value( "${COOKIE_NAME}" )
+    String cookieName;
 
     private final UserService userService;
 
@@ -45,14 +50,13 @@ public class AuthController {
         {
             throw new InvalidCredentialsException();
         }
-
     }
 
     private String generateToken( User user, Date expirationDate )
     {
         return Jwts.builder()
                 .setSubject( user.getId() )
-                .claim( CLAIMS_ROLES_KEY, user.getRoles() )
+                .claim( claimsRolesKey, user.getRoles() )
                 .setIssuedAt(new Date() )
                 .setExpiration( expirationDate )
                 .signWith( SignatureAlgorithm.HS256, secret )
