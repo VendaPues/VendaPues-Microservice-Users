@@ -2,6 +2,7 @@ package org.vendapues.usersapi.service;
 
 import dto.UserDto;
 import error.exception.NotFoundException;
+import error.exception.UserAlreadyRegisteredException;
 import models.UserDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,25 +18,27 @@ public class UserService {
     }
 
     public UserDocument create(UserDto userDto) {
-        return userRepository.save(new UserDocument(userDto));
+        UserDocument user = userRepository.findByEmail(userDto.getEmail());
+        if(user == null){
+            return userRepository.save(new UserDocument(userDto));
+        }
+        throw new UserAlreadyRegisteredException("This email is already registered.");
     }
 
     public UserDocument findById(String id) {
         UserDocument user = userRepository.findById(id).orElse(null);
         if (user != null) {
             return user;
-        } else {
-            throw new NotFoundException("User not found.");
         }
+        throw new NotFoundException("User not found.");
     }
 
-    public UserDocument findByEmail(String email) throws NotFoundException {
+    public UserDocument findByEmail(String email) {
         UserDocument user = userRepository.findByEmail(email);
         if (user != null) {
             return user;
-        } else {
-            throw new NotFoundException("User not found.");
         }
+        throw new NotFoundException("User not found.");
     }
 
     public boolean deleteById(String id) {

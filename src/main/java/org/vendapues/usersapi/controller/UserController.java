@@ -1,6 +1,8 @@
 package org.vendapues.usersapi.controller;
 
 import dto.UserDto;
+import error.exception.NotFoundException;
+import error.exception.UserAlreadyRegisteredException;
 import models.UserDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,19 +22,30 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDocument> findById(@PathVariable String id) {
-        return ResponseEntity.ok(userService.findById(id));
+    public Object findById(@PathVariable String id) {
+        try {
+            return ResponseEntity.ok(userService.findById(id));
+        } catch (Exception e) {
+            return ResponseEntity.ok(e.toString());
+        }
     }
 
-
     @PostMapping
-    public ResponseEntity<UserDocument> create(@RequestBody UserDto userDto) {
-        return ResponseEntity.ok(userService.create(userDto));
+    public Object create(@RequestBody UserDto userDto) {
+        try {
+            return ResponseEntity.ok(userService.create(userDto));
+        } catch (Exception e) {
+            return ResponseEntity.ok(e.toString());
+        }
     }
 
     @DeleteMapping("/{id}")
     @RolesAllowed("ADMIN")
-    public ResponseEntity<Boolean> delete(@PathVariable String id) {
-        return ResponseEntity.ok(userService.deleteById(id));
+    public Object delete(@PathVariable String id) {
+        try {
+            return ResponseEntity.ok(userService.deleteById(id));
+        } catch (Exception e) {
+            return ResponseEntity.ok(e.toString());
+        }
     }
 }
