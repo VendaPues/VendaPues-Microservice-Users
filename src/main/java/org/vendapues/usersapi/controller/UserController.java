@@ -1,9 +1,6 @@
 package org.vendapues.usersapi.controller;
 
 import dto.UserDto;
-import error.exception.NotFoundException;
-import error.exception.UserAlreadyRegisteredException;
-import models.UserDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +9,7 @@ import org.vendapues.usersapi.service.UserService;
 import javax.annotation.security.RolesAllowed;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/v1/user")
 public class UserController {
 
