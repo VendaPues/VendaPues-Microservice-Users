@@ -1,4 +1,4 @@
-package org.vendapues.usersapi.controller.dto;
+package org.vendapues.usersapi.dto;
 
 public class LoginDto
 {

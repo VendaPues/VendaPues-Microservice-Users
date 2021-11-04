@@ -1,21 +1,48 @@
 package org.vendapues.usersapi.service;
 
-import org.vendapues.usersapi.controller.dto.UserDto;
-import org.vendapues.usersapi.exception.UserNotFoundException;
-import org.vendapues.usersapi.repository.document.User;
+import dto.UserDto;
+import error.exception.NotFoundException;
+import models.UserDocument;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.vendapues.usersapi.repository.UserRepository;
 
-import java.util.List;
+@Service
+public class UserService {
 
-public interface UserService {
-    User create(UserDto userDto );
+    private final UserRepository userRepository;
 
-    User findById( String id ) throws UserNotFoundException;
+    public UserService(@Autowired UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-    User findByEmail( String email ) throws UserNotFoundException;
+    public UserDocument create(UserDto userDto) {
+        return userRepository.save(new UserDocument(userDto));
+    }
 
-    List<User> all();
+    public UserDocument findById(String id) {
+        UserDocument user = userRepository.findById(id).orElse(null);
+        if (user != null) {
+            return user;
+        } else {
+            throw new NotFoundException("User not found.");
+        }
+    }
 
-    boolean deleteById( String id );
+    public UserDocument findByEmail(String email) throws NotFoundException {
+        UserDocument user = userRepository.findByEmail(email);
+        if (user != null) {
+            return user;
+        } else {
+            throw new NotFoundException("User not found.");
+        }
+    }
 
-    User update( UserDto userDto, String id );
+    public boolean deleteById(String id) {
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }

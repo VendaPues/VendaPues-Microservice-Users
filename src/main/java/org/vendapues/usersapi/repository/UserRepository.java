@@ -1,10 +1,9 @@
 package org.vendapues.usersapi.repository;
 
+import models.UserDocument;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.vendapues.usersapi.repository.document.User;
 
-import java.util.Optional;
+public interface UserRepository extends MongoRepository<UserDocument, String> {
 
-public interface UserRepository extends MongoRepository<User, String> {
-    Optional<User> findByEmail(String email );
+    UserDocument findByEmail(String email);
 }
